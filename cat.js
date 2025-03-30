@@ -1,10 +1,10 @@
-const http = require('http'); // модуль для роботи з HTTP-запитами
-const { Command } = require('commander'); // бібліотека для створення командного інтерфейсу
-const fs = require('fs').promises; // дозволяє асинхронно працювати з файлами 
-const path = require ('path'); // модуль для роботи з файловою системою
-const superagent = require ('superagent'); // використовується для виконання HTTP-запитів
+const http = require('http'); 
+const { Command } = require('commander'); 
+const fs = require('fs').promises; 
+const path = require ('path'); 
+const superagent = require ('superagent');
 
-const program = new Command(); // створюємо новий екземпляр програми
+const program = new Command(); 
 program
 .requiredOption('-h, --host <host>', 'Server host' )
 .requiredOption('-p, --port <port>', 'Server port' )
@@ -21,10 +21,10 @@ const server = http.createServer ((req, res) => {
 });
 
 server.listen (port, host, () => {
-    console.log('Server is running on http://${host}:${port}');
+    console.log(`Server is running on http://${host}:${port}`);
+    console.log(`Cache directory: ${options.cache}`);
 });
 } catch (error) {
-    console.eeror('Error, please check the command line arguments');
     console.error(error.message);
     process.exit(1);
 }
